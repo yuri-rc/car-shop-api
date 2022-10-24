@@ -7,7 +7,7 @@ import {
 } from '../../mocks/carMock';
 
 describe('Car Model', () => {
-	const frameModel = new CarModel();
+	const carModel = new CarModel();
 
 	before(() => {
 		sinon.stub(Model, 'create').resolves(carMock);
@@ -19,8 +19,8 @@ describe('Car Model', () => {
 
 	describe('creating a car', () => {
 		it('successfully created', async () => {
-			const newFrame = await frameModel.create(carMock);
-			expect(newFrame).to.be.deep.equal(carMock);
+			const newCar = await carModel.create(carMock);
+			expect(newCar).to.be.deep.equal(carMock);
 		});
 	});
 	

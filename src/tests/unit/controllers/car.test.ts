@@ -7,7 +7,7 @@ import CarModel from '../../../models/Car';
 import CarService from '../../../services/Car';
 
 
-describe('Frame Controller', () => {
+describe('Car Controller', () => {
   const carModel = new CarModel()
   const carService = new CarService(carModel);
   const carController = new CarController(carService);
