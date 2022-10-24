@@ -14,7 +14,7 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async read(): Promise<T[]> {
-    return this._model.find();
+    return this._model.find().select('-__v');
   }
 
   public async readOne(_id: string): Promise<T | null> {
@@ -32,7 +32,8 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async delete(_id: string): Promise<T | null> {
-    return this._model.findByIdAndDelete({ _id });
+    if (!isValidObjectId(_id)) throw Error(ErrorTypes.InvalidMongoId);
+    return this._model.findByIdAndDelete({ _id }).select('-__v');
   }
 }
 
